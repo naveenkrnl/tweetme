@@ -17,11 +17,17 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from tweets.views import TweetListView
+from hashtags.views import HashtagView
 from .views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home,name='home'),
+    path('', TweetListView.as_view(), name='home'),
+    path('tags/<hashtag>/', HashtagView.as_view(),name='hashtag'),
     path('tweet/', include('tweets.urls', namespace='tweet')),
+    path('api/tweet/', include('tweets.api.urls', namespace='tweet-api')),
+    path('', include('accounts.urls', namespace='profiles')),
+
 ]
 
 if settings.DEBUG:

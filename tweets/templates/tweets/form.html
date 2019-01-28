@@ -1,5 +1,6 @@
-<form class='form' method='POST' action=''>
+{% load crispy_forms_tags %}
+<form class='form' {% if form_id %} id='{{ form_id }}'{% endif %} method='POST' action='{% if action_url %} {{ action_url }} {% endif %}'>
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type='submit' value='{{ btn_value }}'/>
+    {{ form|crispy }}
+    <input type='submit' class='btn btn-primary' value='{{ btn_value }}'/>
 </form>

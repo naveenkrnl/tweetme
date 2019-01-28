@@ -1,7 +1,13 @@
 {% extends 'base.html'%}
 {% block content %}
-{{ object.content }}<br/>
-{{ object.user }}<br/>
-{{ object.timespace|timesince }}<br/>
+<div class='row'>
+    <div class='col-sm-3 col-xs-12'>
+        <h1>{{ object.user }}</h1><br/>
+    </div>
+    <div class='col-sm-9 col-xs-12'>
+        {{ object.content }}<br/>
+        {{ object.timestamp|timesince }}<br/>
+    </div>
+</div>
 
 {% endblock%}
