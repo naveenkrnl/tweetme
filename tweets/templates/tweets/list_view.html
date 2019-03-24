@@ -11,7 +11,10 @@
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
+    }
+$(document).ready(function(){
+    console.log("HIFNDJ")
+})
 $(document).ready(function(){
     var query= getParameterByName('q')
     var tweetList=[];
@@ -19,8 +22,10 @@ $(document).ready(function(){
 
     function updateHashLinks(){
         $(".media-body").each(function(data){
+            // console.log(this)
             var hashtagRegex= /(^|\s)#([\w\d-]+)/g
             var newText= $(this).html().replace(hashtagRegex, "$1<a href='/tags/$2/'>#$2</a>")
+            console.log(newText)
             $(this).html(newText)
         })
     }
@@ -132,7 +137,7 @@ $(document).ready(function(){
         "<span id='tweetCharsLeft'>" + charsStart + "</span>"        
     )
     $("#tweet-form textarea").keyup(function(event){
-        var tweetValue= $(this).val()
+        var tweetValue = $(this).val()
         charsCurrent=charsStart - tweetValue.length
         var spanChars = $("#tweetCharsLeft")
         spanChars.text(charsCurrent)
@@ -154,7 +159,7 @@ $(document).ready(function(){
 
     $("#tweet-form").submit(function(event){
     event.preventDefault()
-    var this_=$(this)
+    var this_= $(this)
     // console.log(event)
     // console.log(this_.serialize())
     var formData = this_.serialize()
@@ -180,7 +185,8 @@ $(document).ready(function(){
         }    
     })
     }else{
-        console.log("CAnnot send tweet too long")
+        // alert("CAnnot send tweet too long")
+        let a= prompt("Continue?")
     }
 })
 

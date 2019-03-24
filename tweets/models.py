@@ -25,7 +25,7 @@ class TweetManager(models.Manager):
         obj.save()
         return obj
 class Tweet(models.Model):
-    parent=models.ForeignKey("self", blank=True, null=True, on_delete=None)
+    parent=models.ForeignKey("self", blank=True, null=True, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=0)
     content = models.CharField(max_length=140)
     updated = models.DateTimeField(auto_now=True)
